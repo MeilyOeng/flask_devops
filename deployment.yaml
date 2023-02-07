@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: flask-project-deployment
+ 
+spec:
+ template: 
+   metadata:
+     name: flask-devops 
+     labels:
+       app: flask-devops
+       tier: frontend
+   spec:
+     containers:
+       - name: flask-devops
+         image: 13579246800/flask-devops:latest
+ replicas: 3
+ selector: 
+   matchLabels:
+     app: flask-devops
+     tier: frontend

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: flask-project-service-nodeport 
+ 
+spec:
+ type: NodePort 
+ ports:
+   - port: 5008
+     targetPort: 5008 
+     nodePort: 300208 
+ selector: 
+   app: flask-devops
+   tier: frontend
