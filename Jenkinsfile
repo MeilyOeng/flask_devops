@@ -24,6 +24,8 @@ pipeline {
        stage('Deploy') {
            steps {
                echo 'Deploying....'
+               sh 'minikube stop'
+               sh 'minikube start'
                sh 'minikube kubectl -- apply -f deployment.yaml'
                sh 'minikube kubectl -- apply -f service.yaml'
            }
