@@ -19,7 +19,7 @@ pipeline {
                echo 'Deploying....'
                sh 'docker stop $CONTAINER_NAME || true'
                sh 'docker rm $CONTAINER_NAME || true'
-               sh 'docker run -d -p 5000:5000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
+               sh 'docker run -d -p 5008:5000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
            }
        }
    }
