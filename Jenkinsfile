@@ -22,11 +22,13 @@ pipeline {
            }
        }
        stage('Deploy') {
-           steps {
-               echo 'Deploying....'
-               sh 'minikube kubectl -- apply -f deployment.yaml'
-               sh 'minikube kubectl -- apply -f service.yaml'
-           }
-       }
+         steps {
+            echo 'Deploying....'
+            sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml service.yaml meily_oeng@34.136.245.191:~/'
+ 
+            sh 'ssh meily_oeng@34.136.245.191 kubectl apply -f ~/deployment.yaml'
+            sh 'ssh meily_oeng@34.136.245.191 kubectl apply -f ~/service.yaml'
+         }
+      }
    }
 }
