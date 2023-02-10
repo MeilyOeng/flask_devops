@@ -26,8 +26,8 @@ pipeline {
             echo 'Deploying....'
             sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml service.yaml jenkins@10.128.0.3:~/'
  
-            sh 'ssh jenkins@10.128.0.3 minikube kubectl apply -f ~/deployment.yaml'
-            sh 'ssh jenkins@10.128.0.3 minikube kubectl apply -f ~/service.yaml'
+            sh 'ssh jenkins@10.128.0.3 kubectl apply -f ~/deployment.yaml'
+            sh 'ssh jenkins@10.128.0.3 kubectl apply -f ~/service.yaml'
          }
       }
    }
